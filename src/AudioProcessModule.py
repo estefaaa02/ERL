@@ -12,9 +12,12 @@ import IPython
 import numpy as np
 import plotly.graph_objs as go
 import plotly
+import os
+
+audio_dir = os.path.dirname(__file__)
 
 #The read_audio_file method returns the sampling rate of the audio file and a Numpy array of the audio samples
-[Fs, x] = audioBasicIO.read_audio_file("f_ans001aes.wav")
+[Fs, x] = audioBasicIO.read_audio_file(audio_dir + "\\wav_corpus\\f_ans001aes.wav")
 #The feature_extraction function returns (a) 68x20 short-term feature matrix, where 68 is the number of short-term features implemented in the library and
 #20 is the number of frames that fit into the 1-sec segments and (b) a 68-length list of strings that contain the names of each feature implemented in the library.
 F, f_names = ShortTermFeatures.feature_extraction(x, Fs, 0.050*Fs, 0.025*Fs)
@@ -24,9 +27,9 @@ plt.subplot(2,1,2); plt.plot(F[1,:]); plt.xlabel('Frame no'); plt.ylabel(f_names
 
 # read audio data from file
 # (returns sampling freq and signal as a numpy array)
-fs, s = audioBasicIO.read_audio_file("f_ans001aes.wav")
+fs, s = audioBasicIO.read_audio_file(audio_dir + "\\wav_corpus\\f_ans001aes.wav")
 # play the initial and the generated files in notebook:
-IPython.display.display(IPython.display.Audio("f_ans001aes.wav"))
+IPython.display.display(IPython.display.Audio(audio_dir + "\\wav_corpus\\f_ans001aes.wav"))
 # print duration in seconds:
 duration = len(s) / float(fs)
 print(f'duration = {duration} seconds')
