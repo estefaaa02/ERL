@@ -1,4 +1,4 @@
-#Import libaries for the speech to text, text preprocessing and the classification
+#Import libaries for the Speech to text, text preprocessing and the classification
 import speech_recognition as sr
 import nltk
 from nltk.corpus import stopwords 

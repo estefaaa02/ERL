@@ -1,9 +1,4 @@
 #The pyAudioAnalysis library is installed for the preprocessing of the audio signals
-#Estas librerías deben ser instaladas, necesario validar.
-#pip install pyAudioAnalysis
-#pip install AudioSegment
-#pip install eyed3
-#------------------------------------------
 
 from pyAudioAnalysis import audioBasicIO
 from pyAudioAnalysis import ShortTermFeatures
