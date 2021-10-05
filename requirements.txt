@@ -1,0 +1,10 @@
+pyAudioAnalysis==0.3.7
+AudioSegment==0.23.0
+eyed3==0.9.6
+SpeechRecognition==3.8.1
+google-cloud-speech>=2.9.0
+nltk
+pandas
+keras
+sklearn
+pyAudio==0.2.11
