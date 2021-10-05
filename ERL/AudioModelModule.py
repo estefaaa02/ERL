@@ -6,6 +6,7 @@ import numpy as np
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
+import pickle
 
 # Declare the directories for the negative, positive, and neutral audio corpus
 dirs = ['ERL/data/negative', 'ERL/data/positive', 'ERL/data/neutral']
