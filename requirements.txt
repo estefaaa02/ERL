@@ -7,4 +7,5 @@ nltk
 pandas
 keras
 sklearn
+pickle
 pyAudio==0.2.11
