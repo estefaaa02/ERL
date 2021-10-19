@@ -5,5 +5,8 @@ SpeechRecognition==3.8.1
 google-cloud-speech>=2.9.0
 nltk
 pandas
+numpy==1.21.2
 keras
 sklearn
+matplotlib
+tensorflow
