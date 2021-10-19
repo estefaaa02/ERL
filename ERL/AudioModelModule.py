@@ -35,10 +35,21 @@ def audio_svm_model():
   predicted=model1.predict(X_test)
   # Prints the metrics of the model
   # Model Accuracy: The set of labels predicted for a sample match exactly the corresponding set of labels of the dataset
+  accuracy = metrics.accuracy_score(y_test, predicted)
   print("Accuracy:",metrics.accuracy_score(y_test, predicted))
   # Model Precision: The ability of the classifier not to label as positive a sample that is negative
+  precision = metrics.precision_score(y_test, predicted, average="weighted")
   print("Precision:",metrics.precision_score(y_test, predicted, average="weighted"))
   # Model Recall: The ability of the classifier to find all the positive samples
+  recall = metrics.recall_score(y_test, predicted, average="weighted")
   print("Recall:", metrics.recall_score(y_test, predicted, average="weighted"))
   # Model F-Score: Weighted average of the precision and recall
+  fscore = metrics.f1_score(y_test, predicted, average="weighted")
   print("F-Score:", metrics.f1_score(y_test, predicted, average="weighted"))
+
+  f = open("ERL/metrics/audio_svm_metrics.txt", "w")
+  f.write("Accuracy:" + str(accuracy))
+  f.write("\nPrecision:" + str(precision))
+  f.write("\nRecall:" + str(recall))
+  f.write("\nF-Score:" + str(fscore))
+  f.close()

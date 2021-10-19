@@ -92,5 +92,13 @@ def train_cnn_model():
   print('Test Recall: %f' % (recall*100))
   # Evaluates the model using F1-Score
   predicted = model.predict(x_test)
+  fscore = get_f1(y_test, predicted)
   print("Test F1-Score: %f" % (get_f1(y_test, predicted)*100))
+
+  f = open("ERL/metrics/text_cnn_metrics.txt", "w")
+  f.write("Accuracy:" + str(acc))
+  f.write("\nPrecision:" + str(precision))
+  f.write("\nRecall:" + str(recall))
+  f.write("\nF-Score:" +str(fscore.numpy()))
+  f.close()
 

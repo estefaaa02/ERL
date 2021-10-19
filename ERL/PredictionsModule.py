@@ -1,5 +1,6 @@
 from ERL import AudioProcessModule
 from ERL import TextProcessingModule
+from ERL import BimodalModule
 import pickle
 from tensorflow.keras.models import load_model
 
@@ -45,6 +46,26 @@ def predict_emotion_text_cnn(audio_file):
     return "Positive"
   else:
     return "Prediction not found"
+
+def predict_emotion_bimodal(audio_file):
+  """
+  This function predicts the emotion out of a given audio file using a bimodal approach
+
+  ARGUMENTS:
+    -audio_file: The path of the file to predict from
+  """
+  # Calculate which model to use
+  result = BimodalModule.bimodal()
+  emotion = ""
+  
+  if result == 0:
+    # If result is 0 then the model to use will be svm
+    emotion = predict_emotion_audio_svm(audio_file)
+  elif result == 1:
+    # If result is 1 then the model to use will be cnn
+    emotion = predict_emotion_text_cnn(audio_file)
+
+  return emotion
 
 def load_model_audio(file_path):
   """
