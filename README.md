@@ -15,3 +15,4 @@ ERL is a Python library that does emotion recognition through audio. With this l
     
     print("Predicción Audio: ", PredictionsModule.predict_emotion_audio_svm('ERL/data/es/f_ans002aes.wav'))
     print("Predicción Texto: ", PredictionsModule.predict_emotion_text_cnn('ERL/data/es/f_ans002aes.wav'))
+    print("Predicción Bimodal: ", PredictionsModule.predict_emotion_bimodal('ERL/data/es/f_ans002aes.wav'))
