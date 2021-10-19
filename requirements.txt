@@ -7,4 +7,3 @@ nltk
 pandas
 keras
 sklearn
-pyAudio==0.2.11

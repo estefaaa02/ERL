@@ -11,12 +11,12 @@ def read(fname):
 requirements = read('requirements.txt').splitlines()
 
 setup(name='ERL',
-      version='1.0',
+      version='1.0.1',
       description='ERL: Emotion Recognition Library',
       url='https://github.com/estefaaa02/ERL',
       author='Mario Gómez Estefanía Pérez Victoria Núñez',
       author_email='mgomezcam@unbosque.edu.co eperezt@unbosque.edu.co vnunezd@unbosque.edu.co',
-      license='Apache License, Version 2.0',
+      license='GPLv3 License',
       packages=['ERL'],
       package_data={
         'ERL': ['models/*']
