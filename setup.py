@@ -10,7 +10,7 @@ def read(fname):
 
 requirements = read('requirements.txt').splitlines()
 
-setup(name='ERL',
+setup(name='ERL-Spanish',
       version='1.0.1',
       description='ERL: Emotion Recognition Library',
       url='https://github.com/estefaaa02/ERL',

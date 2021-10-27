@@ -1,8 +1,5 @@
 # Import dependencies for the model
-from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import MidTermFeatures as aF
 from ERL import AudioProcessModule
-import numpy as np 
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
@@ -53,3 +50,4 @@ def audio_svm_model():
   f.write("\nRecall:" + str(recall))
   f.write("\nF-Score:" + str(fscore))
   f.close()
+

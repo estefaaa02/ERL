@@ -3,10 +3,10 @@ AudioSegment==0.23.0
 eyed3==0.9.6
 SpeechRecognition==3.8.1
 google-cloud-speech>=2.9.0
-nltk
-pandas
-numpy==1.21.2
-keras
+nltk==3.6.5
+pandas==1.3.4
+numpy==1.19.2
+keras==2.6.0
 sklearn
-matplotlib
-tensorflow
+matplotlib==3.4.3
+tensorflow==2.6.0
