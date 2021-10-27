@@ -1,5 +1,4 @@
 from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import ShortTermFeatures
 from pyAudioAnalysis import MidTermFeatures as aF
 import numpy as np
 
