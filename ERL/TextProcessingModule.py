@@ -1,14 +1,17 @@
 # Import libaries for the speech to text and text preprocessing
 import speech_recognition as sr
 import nltk
-from nltk.corpus import stopwords 
-from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
 import pandas as pd
 import numpy as np
 from tensorflow.keras.utils import to_categorical
 from sklearn.preprocessing import LabelEncoder
+import pathlib
+
+# Current directory
+HERE = pathlib.Path(__file__).resolve().parent
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -165,7 +168,7 @@ def preprocess_text_dataset(corpus_file, dataset_dir):
   preprocessed_text = label_encoder_text.fit_transform(preprocessed_text)
   tags = label_encoder_tags.fit_transform(tags)
   # Saves the preprocessed text classes of the label encoding
-  np.save('ERL/classes/text_classes.npy', label_encoder_text.classes_)
+  np.save(HERE / 'classes/text_classes.npy', label_encoder_text.classes_)
   # Transforms the tags to categorical based on the number of class names
   tags = to_categorical(tags, 3)
 
@@ -217,7 +220,7 @@ def process_audio(filename):
       for t in lemmatized:
         #The preprocessed text is transformed to numerical values
         encoder = LabelEncoder()
-        encoder.classes_ = np.load('ERL/classes/text_classes.npy')
+        encoder.classes_ = np.load(HERE / 'classes/text_classes.npy')
         txt = encoder.transform([t])
         final_text.append(txt)
         

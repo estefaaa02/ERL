@@ -3,6 +3,10 @@ from ERL import TextProcessingModule
 from ERL import BimodalModule
 import pickle
 from tensorflow.keras.models import load_model
+import pathlib
+
+# Current directory
+HERE = pathlib.Path(__file__).resolve().parent
 
 def predict_emotion_audio_svm(input_file):
   """
@@ -14,7 +18,7 @@ def predict_emotion_audio_svm(input_file):
   # Extracts the features of the given audio
   features = AudioProcessModule.preprocess_single_audio(input_file)
   # Loads the previously generated svm model
-  model = load_model_audio("ERL/models/audio_svm_model.sav")
+  model = load_model_audio(HERE / "models/audio_svm_model.sav")
   # Predicts the emotion
   predicted = model.predict(features)[0]
   # Depending on the prediction the function returns Negative, Positive or Neutral
@@ -33,7 +37,7 @@ def predict_emotion_text_cnn(audio_file):
     -audio_file: The path of the file to predict from
   """
   encoded_text = TextProcessingModule.process_audio(audio_file)
-  model = load_model_text("ERL/models/modelo_texto.h5")
+  model = load_model_text(HERE / "models/modelo_texto.h5")
   predicted = model.predict(encoded_text)
   negative = round(predicted[0][0])
   neutral = round(predicted[0][1])

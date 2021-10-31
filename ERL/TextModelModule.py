@@ -1,20 +1,20 @@
 # Import libaries for the speech to text, text preprocessing and the classification
-import numpy as np
 import tensorflow
-from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Flatten
 from tensorflow.keras.layers import Embedding
 from tensorflow.keras.layers import GlobalMaxPooling1D
 from tensorflow.keras.layers import Conv1D
-from tensorflow.keras.layers import MaxPooling1D
 from sklearn.model_selection import train_test_split
-from sklearn import metrics
 from tensorflow.keras.metrics import Precision
 from tensorflow.keras.metrics import Recall
 import tensorflow.keras.backend as K
 from ERL import TextProcessingModule
+import pathlib
+
+# Current directory
+HERE = pathlib.Path(__file__).resolve().parent
 
 def cnn_model(xtrain, ytrain, vocab_size):
   """
@@ -48,7 +48,7 @@ def cnn_model(xtrain, ytrain, vocab_size):
   # Fit network
   model.fit(xtrain, ytrain, epochs=500, batch_size=512)
   # Saves the model
-  filename = 'ERL/models/modelo_texto.h5'
+  filename = HERE / 'models/modelo_texto.h5'
   model.save(filename)
 
   return model
@@ -95,7 +95,7 @@ def train_cnn_model():
   fscore = get_f1(y_test, predicted)
   print("Test F1-Score: %f" % (get_f1(y_test, predicted)*100))
 
-  f = open("ERL/metrics/text_cnn_metrics.txt", "w")
+  f = open(HERE / "metrics/text_cnn_metrics.txt", "w")
   f.write("Accuracy:" + str(acc))
   f.write("\nPrecision:" + str(precision))
   f.write("\nRecall:" + str(recall))

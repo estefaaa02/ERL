@@ -1,4 +1,7 @@
+import pathlib
 
+# Current directory
+HERE = pathlib.Path(__file__).resolve().parent
 
 AUDIO_ACCURACY_NORMALIZATION = 0.15
 AUDIO_PRECISION_NORMALIZATION = 0.12
@@ -54,8 +57,8 @@ def get_text_cnn_metrics(filepath):
   return text_cnn_accuracy, text_cnn_precision, text_cnn_recall, text_cnn_fscore
 
 def bimodal():
-  audio_accuracy, audio_precision, audio_recall, audio_fscore = get_audio_svm_metrics("ERL/metrics/audio_svm_metrics.txt")
-  text_accuracy, text_precision, text_recall, text_fscore = get_text_cnn_metrics("ERL/metrics/text_cnn_metrics.txt")
+  audio_accuracy, audio_precision, audio_recall, audio_fscore = get_audio_svm_metrics(HERE / "metrics/audio_svm_metrics.txt")
+  text_accuracy, text_precision, text_recall, text_fscore = get_text_cnn_metrics(HERE / "metrics/text_cnn_metrics.txt")
 
   audio_accuracy = audio_accuracy * AUDIO_ACCURACY_NORMALIZATION
   audio_precision = audio_precision * AUDIO_PRECISION_NORMALIZATION
