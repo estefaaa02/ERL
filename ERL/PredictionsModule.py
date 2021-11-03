@@ -59,15 +59,18 @@ def predict_emotion_bimodal(audio_file):
     -audio_file: The path of the file to predict from
   """
   # Calculate which model to use
-  result = BimodalModule.bimodal()
+  result = BimodalModule.bimodal(audio_file)
   emotion = ""
   
   if result == 0:
-    # If result is 0 then the model to use will be svm
-    emotion = predict_emotion_audio_svm(audio_file)
+    # If result is 0 then the emotion is negative
+    emotion = "Negative"
   elif result == 1:
-    # If result is 1 then the model to use will be cnn
-    emotion = predict_emotion_text_cnn(audio_file)
+    # If result is 1 then the emotion is positive
+    emotion = "Positive"
+  elif result == 2:
+    # If result is 2 then the emotion is neutral
+    emotion = "Neutral"
 
   return emotion
 
@@ -94,3 +97,4 @@ def load_model_text(file_path):
   loaded_model = load_model(file_path)
 
   return loaded_model
+
