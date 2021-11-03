@@ -4,9 +4,13 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 import pickle
+import pathlib
+
+# Current directory
+HERE = pathlib.Path(__file__).resolve().parent
 
 # Declare the directories for the negative, positive, and neutral audio corpus
-dirs = ['ERL/data/negative', 'ERL/data/positive', 'ERL/data/neutral']
+dirs = [HERE / 'data/negative', HERE / 'data/positive', HERE / 'data/neutral']
 
 def audio_svm_model():
   """
@@ -25,7 +29,7 @@ def audio_svm_model():
   model = SVC(kernel = 'rbf', C = 400000)
   model1 = model.fit(X_train, y_train)
   # Persists the trained model using pickle
-  filename = 'ERL/models/audio_svm_model.sav'
+  filename = HERE / 'models/audio_svm_model.sav'
   pickle.dump(model1, open(filename, 'wb'))
   model1.score(X_train,y_train)
   #predicts using the test part of the dataset
@@ -44,7 +48,7 @@ def audio_svm_model():
   fscore = metrics.f1_score(y_test, predicted, average="weighted")
   print("F-Score:", metrics.f1_score(y_test, predicted, average="weighted"))
 
-  f = open("ERL/metrics/audio_svm_metrics.txt", "w")
+  f = open(HERE / "metrics/audio_svm_metrics.txt", "w")
   f.write("Accuracy:" + str(accuracy))
   f.write("\nPrecision:" + str(precision))
   f.write("\nRecall:" + str(recall))
