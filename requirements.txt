@@ -10,3 +10,4 @@ keras==2.6.0
 sklearn
 matplotlib==3.4.3
 tensorflow==2.6.0
+tqdm
